@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,9 +59,7 @@ public class ContactController {
 
     @PostMapping("/{id}/edit/")
     public String updateContact( @PathVariable Integer id, @Validated Contact contact, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
-
         Contact contactDB = contactRepository.getById(id);
-
         if(bindingResult.hasErrors()){
             model.addAttribute("contact",contact);
             return "/new";
